@@ -1,12 +1,14 @@
 {
-    "name": "demo-node",
+    "name": "testing_web",
     "version": "1.0.0",
     "main": "index.js",
     "type": "module",
     "scripts": {
         "build": "tsc -w",
-        "test": "vitest run",
+        "start": "live-server --port=8080 --open=.dist/index.html",
+        "test": "vitest run --watch false",
         "test:c": "vitest run --coverage",
+        "test:w": "vitest",
         "lint": "eslint ."
     },
     "keywords": [],
