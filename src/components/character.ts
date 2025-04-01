@@ -1,11 +1,14 @@
+import type { Character } from '../types/character.js';
 import { render } from './base.js';
 import { createCommunications } from './communications.js';
-const setState = (isAlive) => {
+
+const setState = (isAlive: boolean) => {
     return isAlive
         ? `<i class="fas fa-thumbs-up" data-testId="state"></i>`
         : `<i class="fas fa-thumbs-down" data-testId="state"></i>`;
 };
-const setOverlay = (char) => {
+
+const setOverlay = (char: Character) => {
     let result = '';
     switch (char.category) {
         case 'king':
@@ -31,15 +34,24 @@ const setOverlay = (char) => {
             `;
             break;
     }
+
     return result;
 };
-export function createCharacter(selector = 'body', position = 'beforeend', character) {
+
+export function createCharacter(
+    selector = 'body',
+    position: InsertPosition = 'beforeend',
+    character: Character,
+) {
     const dead = () => {
-        const state = element?.querySelector('[data-testId="state"]');
+        const state = element?.querySelector(
+            '[data-testId="state"]',
+        ) as HTMLElement;
         state.classList.toggle('fa-thumbs-up');
         state.classList.toggle('fa-thumbs-down');
         character.isAlive = !character.isAlive;
     };
+
     const talk = () => {
         const element = createCommunications(character);
         setTimeout(() => {
@@ -49,6 +61,7 @@ export function createCharacter(selector = 'body', position = 'beforeend', chara
             }, 500);
         }, 2000);
     };
+
     const template = /*html*/ `
       <li class="character" aria-label="${character.id}">
         <div class="card character__card">
@@ -77,8 +90,9 @@ export function createCharacter(selector = 'body', position = 'beforeend', chara
         </div>
       </li>
     `;
+
     const element = render(selector, position, template);
-    const buttons = element.querySelectorAll('button');
+    const buttons = element!.querySelectorAll('button');
     // Habla
     buttons[0].addEventListener('click', talk);
     // Muere

@@ -5,30 +5,28 @@
     "type": "module",
     "scripts": {
         "build": "tsc -w",
-        "start": "live-server --port=8080 --open=.dist/index.html",
-        "test": "vitest run --watch false",
-        "test:c": "vitest run --coverage",
+        "start": "live-server --port=8080 --open=./dist/index.html",
+        "test": "vitest --watch false",
         "test:w": "vitest",
-        "lint": "eslint ."
+        "test:c": "vitest --watch false --coverage"
     },
-    "keywords": [],
-    "author": "",
+    "author": "Alejandro Cerezo",
     "license": "ISC",
-    "description": "",
+    "description": "Testing",
     "devDependencies": {
-        "@eslint/js": "^9.18.0",
+        "@eslint/js": "^9.23.0",
         "@testing-library/dom": "^10.4.0",
         "@testing-library/jest-dom": "^6.6.3",
         "@testing-library/user-event": "^14.6.1",
-        "@types/node": "^22.12.0",
-        "@vitest/coverage-v8": "^3.0.4",
-        "eslint": "^9.18.0",
-        "globals": "^15.14.0",
+        "@types/node": "^22.13.12",
+        "@vitest/coverage-v8": "^3.0.9",
+        "eslint": "^9.23.0",
+        "globals": "^16.0.0",
         "jsdom": "^26.0.0",
-        "prettier": "^3.4.2",
-        "typescript": "^5.7.3",
-        "typescript-eslint": "^8.20.0",
-        "vitest": "^3.0.4"
+        "prettier": "^3.5.3",
+        "typescript": "^5.8.2",
+        "typescript-eslint": "^8.27.0",
+        "vitest": "^3.0.9"
     },
     "prettier": {
         "singleQuote": true
