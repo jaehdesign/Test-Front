@@ -33,6 +33,14 @@ const setOverlay = (char) => {
     }
     return result;
 };
+/**
+ * Función que crea un personaje en el DOM
+ *
+ * @param selector: string - Selector del elemento padre donde se va a insertar el personaje
+ * @param position : InsertPosition - Posición donde se va a insertar el personaje (beforeend, afterbegin, etc.)
+ * @param character : Character - Objeto que representa el personaje a crear
+ * @returns void
+ */
 export function createCharacter(selector = 'body', position = 'beforeend', character) {
     const dead = () => {
         const state = element?.querySelector('[data-testId="state"]');
@@ -83,4 +91,5 @@ export function createCharacter(selector = 'body', position = 'beforeend', chara
     buttons[0].addEventListener('click', talk);
     // Muere
     buttons[1].addEventListener('click', dead);
+    return element;
 }

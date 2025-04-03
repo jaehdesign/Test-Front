@@ -196,6 +196,7 @@ describe('Given createCharacter function', () => {
                 message: 'Hola soy el rey',
                 category: 'king',
             };
+            vi.useFakeTimers();
             // Act
             createCharacter(selector, position, character);
             element = screen.getByRole('listitem', {
@@ -209,6 +210,15 @@ describe('Given createCharacter function', () => {
             btnTalk.click();
             const elementMessage = screen.getByText('Hola soy el rey');
             expect(elementMessage).toBeInTheDocument();
+        });
+        test('Then the component Communications should be removed', async () => {
+            expect(element).toBeInTheDocument();
+            const buttons = element.querySelectorAll('button');
+            const btnTalk = buttons[0];
+            btnTalk.click();
+            vi.runAllTimers();
+            const elementMessage = screen.queryByText('Hola soy el rey');
+            expect(elementMessage).toBe(null);
         });
     });
 });
